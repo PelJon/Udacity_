@@ -8,16 +8,24 @@ In this project, you will be provided with a real-world dataset, extracted from 
 
 1. Start by installing necessary libraries and packages
 
-'''./start.sh'''
+```
+./start.sh
+```
 
 2. Start Zookeeper and your Kafka Server using the following commands:
 
-'''/usr/bin/zookeeper-server-start ./config/zookeeper.properties'''
-'''/usr/bin/kafka-server-start ./config/server.properties'''
+```
+/usr/bin/zookeeper-server-start ./config/zookeeper.properties
+```
+```
+/usr/bin/kafka-server-start ./config/server.properties
+```
 
 3. Run the kafka_producer.py to initialize the producer and the topic
 4. Test if topic creation was successful and topic is listed
-'''kafka-topics --list --zookeeper localhost:2181'''
+```
+kafka-topics --list --zookeeper localhost:2181
+```
 
 5. Run the consumer_server.py to get consumed messages and check correctness
 
