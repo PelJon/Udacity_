@@ -21,13 +21,19 @@ In this project, you will be provided with a real-world dataset, extracted from 
     /usr/bin/kafka-server-start ./config/server.properties
     ```
 
-3. Run the kafka_producer.py to initialize the producer and the topic
+3. Run the kafka_server.py to initialize the producer and the topic
 4. Test if topic creation was successful and topic is listed
     ```
     kafka-topics --list --zookeeper localhost:2181
     ```
 
 5. Run consumer_server.py to get consumed messages and check correctness
+
+6. Run data_stream.py with the following command
+
+    ```
+    spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py
+    ```
 
 ## 3. Screenshots
 

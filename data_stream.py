@@ -47,11 +47,11 @@ def run_spark_job(spark):
 
     service_table = kafka_df \
         .select(psf.from_json(psf.col('value'), schema).alias("crime-statistics")) \
-        .select("crime_statistics.*")
+        .select("crime-statistics.*")
 
     service_table.printSchema()
 
-    # TODO select original_crime_type_name and disposition
+    # Select original_crime_type_name and disposition
     distinct_table = service_table \
         .select(psf.col('original_crime_type_name'),
                 psf.col('disposition'))
@@ -59,14 +59,21 @@ def run_spark_job(spark):
     distinct_table.printSchema()
 
     # count the number of original crime type
-    # agg_df =
+    agg_df = distinct_table \
+        .groupBy('original_crime_type_name') \
+        .agg({"*": "count"})
 
     # TODO Q1. Submit a screen shot of a batch ingestion of the aggregation
     # TODO write output stream
-    # query = agg_df \
+    query = agg_df \
+        .writeStream \
+        .outputMode('complete') \
+        .format('console') \
+        .option('truncate', 'false') \
+        .start()
 
-    # TODO attach a ProgressReporter
-    # query.awaitTermination()
+    # Attach a ProgressReporter
+    query.awaitTermination()
 
     # TODO get the right radio code json path
     # radio_code_json_filepath = ""
