@@ -5,6 +5,9 @@ topic_name = "com.udacity.crime.statistics.LA"
 
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
+    logging.basicConfig(level=logging.INFO)
+    console = logging.StreamHandler()
+    logger.addHandler(console)
     
     c = KafkaConsumer(
             bootstrap_servers='localhost:9092',
@@ -14,6 +17,6 @@ if __name__ == "__main__":
     
     for message in c:
         if message is None:
-            print(f"No message received by consumer")
+            logger.info(f"No message received by consumer")
         else:
-            print(message.value)
+            logger.info(message.value)
