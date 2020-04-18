@@ -1,25 +1,32 @@
+import producer_server
 import logging
-import pykafka
-import json
-import time
 
-def generate_data():
-        with open(input_file) as f:
-            json_array = json.load(f)
-            for line in json_array:
-                message = dict_to_binary(line)
-                # TODO send the correct data
-                producer.produce(message)
-                print(message)
-                time.sleep(1)
-                
-def dict_to_binary(json_dict):
-        return json.dumps(json_dict).encode('utf-8')
-
-if __name__ == "__main__":
-    client = pykafka.KafkaClient("localhost:9092")
-    print(f"topics, {client.topics}")
+def run_kafka_server():
+    # Get the json file path
     input_file = "police-department-calls-for-service.json"
-    producer = client.topics[b'com.udacity.crime.statistics.LA'].get_producer()
-    generate_data()
 
+    # Create a Producer Server.
+    producer = producer_server.ProducerServer(
+        input_file=input_file,
+        topic="com.udacity.crime.statistics.LA",
+        bootstrap_servers="localhost:9092",
+        client_id=None
+    )
+
+    if producer.bootstrap_connected():
+        logging.info("Bootstrap server connected")
+
+    return producer
+
+# Driver for Kafka Producer nd feed data to topic
+if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(level=logging.INFO)
+    console = logging.StreamHandler()
+    producer = run_kafka_server()
+    try:
+        producer.generate_data()
+    except:
+        producer.counter = 0
+        producer.flush()
+        producer.close()

@@ -8,13 +8,13 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     console = logging.StreamHandler()
     logger.addHandler(console)
-    
+
     c = KafkaConsumer(
-            bootstrap_servers='localhost:9092',
-            auto_offset_reset='earliest',
-            consumer_timeout_ms=1000)
+        bootstrap_servers='localhost:9092',
+        auto_offset_reset='earliest',
+        consumer_timeout_ms=1000)
     c.subscribe([topic_name])
-    
+
     for message in c:
         if message is None:
             logger.info(f"No message received by consumer")

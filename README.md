@@ -27,7 +27,11 @@ In this project, you will be provided with a real-world dataset, extracted from 
     kafka-topics --list --zookeeper localhost:2181
     ```
 
-5. Run consumer_server.py to get consumed messages and check correctness
+5. Run consumer_server.py to get consumed messages and check correctness or run kafka consumer in terminal with the following command
+
+    ````bash
+    kafka-console-consumer --bootstrap-server localhost:9092 --topic com.udacity.crime.statistics.LA --from-beginning
+    ````
 
 6. Run data_stream.py with the following command
 
@@ -37,9 +41,21 @@ In this project, you will be provided with a real-world dataset, extracted from 
 
 ## 3. Screenshots
 
-A screenshot of the output of the consumer can be seen in the following image:
+A screenshot of the output of the consumer:
 
 ![Kafka Consumer Console Output](./images/kafka-consumer-console_output.png "Kafka Consumer Console Output")
+
+A screenshot of the count result for Crime Types by hour and day 
+
+![Kafka Consumer Console Output](./images/Query_Batch_0.png "Query Output Count on Crime Type by hour")
+
+A screenshot of the UI while Streaming jobs are executed:
+
+![Kafka Consumer Console Output](./images/21.png "SparkStreaming_UI")
+
+A screenshot of the progress reporter in the console:
+
+![Kafka Consumer Console Output](./images/1.png "ProgressReporter in Console")
 
 ## 4. Requirements
 
@@ -50,3 +66,7 @@ A screenshot of the output of the consumer can be seen in the following image:
 * Python 3.6.x or 3.7.x
 
 ## 5. Respond to questions for successful project submission
+
+How did changing values on the SparkSession property parameters affect the throughput and latency of the data?
+
+What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
