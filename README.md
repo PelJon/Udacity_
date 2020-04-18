@@ -69,4 +69,15 @@ A screenshot of the progress reporter in the console:
 
 How did changing values on the SparkSession property parameters affect the throughput and latency of the data?
 
+    The smaller the number of InputRows, the more time is needed for each batch to be processed as it cost a decent 
+    amount of time to fetch the data and create the object header as well as the overhead. The more partitions and 
+    rows are available, the faster it gets to process the tasks/batches if parallelism is given. If respective 
+    partitions in Kafka has an uneven distribution of produced messages, it can also be helpful to rethink the 
+    distribution strategy.
+
 What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
+
+    The most effective properties for a SparkSession for given tasks were maxOffsetsPerTrigger and maxRatePerPartition.
+    Based on the partitions configured, the number of maxRatePerPartition should not extent the maxOffsetsPerTrigger
+    (if multiplied with the partitions). The optimal rate was achieved with a rather large number of Offsets (ca. 2000)
+    and maxRatePerPartition of 1000.
