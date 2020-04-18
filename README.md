@@ -45,17 +45,17 @@ A screenshot of the output of the consumer:
 
 ![Kafka Consumer Console Output](./images/kafka-consumer-console_output.png "Kafka Consumer Console Output")
 
-A screenshot of the count result for Crime Types by hour and day 
+A screenshot of the count result for Crime Types by hour and day:
 
-![Kafka Consumer Console Output](./images/Query_Batch_0.png "Query Output Count on Crime Type by hour")
+![Query Batch](./images/Query_Batch_0.png "Query Output Count on Crime Type by hour")
 
 A screenshot of the UI while Streaming jobs are executed:
 
-![Kafka Consumer Console Output](./images/21.png "SparkStreaming_UI")
+![Spark UI](./images/21.png "SparkStreaming_UI")
 
 A screenshot of the progress reporter in the console:
 
-![Kafka Consumer Console Output](./images/1.png "ProgressReporter in Console")
+![Progress Reporter](./images/1.png "ProgressReporter in Console")
 
 ## 4. Requirements
 
