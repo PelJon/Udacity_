@@ -78,6 +78,6 @@ How did changing values on the SparkSession property parameters affect the throu
 What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
 
     The most effective properties for a SparkSession for given tasks were maxOffsetsPerTrigger and maxRatePerPartition.
-    Based on the partitions configured, the number of maxRatePerPartition should not extent the maxOffsetsPerTrigger
+    Based on the partitions configured, the number of maxRatePerPartition should not extend the maxOffsetsPerTrigger
     (if multiplied with the partitions). The optimal rate was achieved with a rather large number of Offsets (ca. 2000)
     and maxRatePerPartition of 1000.
