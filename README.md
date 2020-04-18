@@ -43,7 +43,7 @@ In this project, you will be provided with a real-world dataset, extracted from 
 
 A screenshot of the output of the consumer:
 
-![Kafka Consumer Console Output](./images/kafka-consumer-console_output.png "Kafka Consumer Console Output")
+![Kafka Consumer Console Output](./images/kafka-consumer-console_output.PNG "Kafka Consumer Console Output")
 
 A screenshot of the count result for Crime Types by hour and day:
 
