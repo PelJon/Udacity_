@@ -47,7 +47,7 @@ A screenshot of the output of the consumer:
 
 A screenshot of the count result for Crime Types by hour and day:
 
-![Query Batch](./images/Query_Batch_0.png "Query Output Count on Crime Type by hour")
+![Query Batch](./images/Query_Batch_0.PNG "Query Output Count on Crime Type by hour")
 
 A screenshot of the UI while Streaming jobs are executed:
 
